@@ -7,11 +7,11 @@ public class Salary{
 	private int basicSalary,hra,conveyenceAllowance;
 	private int otherAllowance,personalAllowance,epf;
 	double monthlyTax;
-	private int companyPf,grossSalary;
+	private int companypf,grossSalary;
 	double netSalary;
 	public Salary() {}
 	
-	public Salary(int basicSalary, int hra, int conveyenceAllowance, int otherAllowance, int personalAllowance, int monthlyTax, int epf, int companyPf, int grossSalary, int netSalary) {
+	public Salary(int basicSalary, int hra, int conveyenceAllowance, int otherAllowance, int personalAllowance, int monthlyTax, int epf, int companypf, int grossSalary, int netSalary) {
 		super();
 		this.basicSalary = basicSalary;
 		this.hra = hra;
@@ -20,15 +20,15 @@ public class Salary{
 		this.personalAllowance = personalAllowance;
 		this.monthlyTax = monthlyTax;
 		this.epf = epf;
-		this.companyPf = companyPf;
+		this.companypf = companypf;
 		this.grossSalary = grossSalary;
 		this.netSalary = netSalary;
 	}
-	public Salary(int basicSalary, int epf, int companyPf) {
+	public Salary(int basicSalary, int epf, int companypf) {
 		super();
 		this.basicSalary = basicSalary;
 		this.epf = epf;
-		this.companyPf = companyPf;
+		this.companypf = companypf;
 	}
 	public int getBasicSalary() {
 		return basicSalary;
@@ -72,11 +72,11 @@ public class Salary{
 	public void setEpf(int epf) {
 		this.epf = epf;
 	}
-	public int getCompanyPf() {
-		return companyPf;
+	public int getCompanypf() {
+		return companypf;
 	}
-	public void setCompanyPf(int companyPf) {
-		this.companyPf = companyPf;
+	public void setCompanyPf(int companypf) {
+		this.companypf = companypf;
 	}
 	public int getGrossSalary() {
 		return grossSalary;
@@ -90,7 +90,6 @@ public class Salary{
 	public void setNetSalary(double netSalary2) {
 		this.netSalary = netSalary2;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,7 +101,7 @@ public class Salary{
 		Salary other = (Salary) obj;
 		if (basicSalary != other.basicSalary)
 			return false;
-		if (companyPf != other.companyPf)
+		if (companypf != other.companypf)
 			return false;
 		if (conveyenceAllowance != other.conveyenceAllowance)
 			return false;
@@ -124,6 +123,6 @@ public class Salary{
 	}
 	@Override
 	public String toString() {
-		return "Salary [basicSalary=" + basicSalary + ", monthlyTax=" + monthlyTax + ", epf=" + epf + ", companyPf="+ companyPf + ", grossSalary=" + grossSalary + ", netSalary=" + netSalary + "]";
+		return "Salary [basicSalary=" + basicSalary + ", monthlyTax=" + monthlyTax + ", epf=" + epf + ", companypf="+ companypf + ", grossSalary=" + grossSalary + ", netSalary=" + netSalary + "]";
 	}
 }

@@ -21,16 +21,16 @@ public class PayrollServicesImpl  implements PayrollServices{
 		return associate.getAssociatedId();
 	}
 	@Override
-	public double calculateNetSalary(int associateId) throws AssociateDetailsNotFoundException  {
+	public Associate calculateNetSalary(int associateId) throws AssociateDetailsNotFoundException  {
 		Associate associate=getAssociateDetails(associateId);
 		Salary salary = salaryDetails(associate);
 		double taxableAmount =(salary.getGrossSalary()-associate.getYearlyInvestmentUnder80C());
 		salary.setMonthlyTax(calculateTax(associate, taxableAmount));
-		double netSalary =  (taxableAmount - (salary.getMonthlyTax() + associate.getSalary().getEpf() + associate.getSalary().getCompanyPf() + associate.getYearlyInvestmentUnder80C()));
+		double netSalary = (int) (taxableAmount - (salary.getMonthlyTax() + associate.getSalary().getEpf() + associate.getSalary().getCompanypf() + associate.getYearlyInvestmentUnder80C()));
 		associate.getSalary().setNetSalary(netSalary);
 		associate.setSalary(salaryDetails(associate));
 		associateDao.update(associate);
-		return netSalary;
+		return associate;
 	}
 	
 	public double calculateTax(Associate associate, double taxableAmount) {
@@ -66,7 +66,7 @@ public class PayrollServicesImpl  implements PayrollServices{
 	public Associate getAssociateDetails(int associateId) throws AssociateDetailsNotFoundException {
 		Associate associate=associateDao.findOne(associateId);
 		if(associate==null)
-			throw new AssociateDetailsNotFoundException("Associate details not found for id"+associateId);
+			throw new AssociateDetailsNotFoundException("Associate Details not found for Id "+associateId);
 		else
 			return associate;
 	}
@@ -77,6 +77,6 @@ public class PayrollServicesImpl  implements PayrollServices{
 	@Override
 	public double calculateAnnualGrossSalary(int associateId) throws AssociateDetailsNotFoundException {
 		Associate associate=getAssociateDetails(associateId);
-		return (associate.getSalary().getBasicSalary() +0.3*associate.getSalary().getBasicSalary()*2+0.25*associate.getSalary().getBasicSalary()+0.2*associate.getSalary().getBasicSalary()+associate.getSalary().getCompanyPf()+associate.getSalary().getEpf())*12;
+		return (associate.getSalary().getBasicSalary() +0.3*associate.getSalary().getBasicSalary()*2+0.25*associate.getSalary().getBasicSalary()+0.2*associate.getSalary().getBasicSalary()+associate.getSalary().getCompanypf()+associate.getSalary().getEpf())*12;
 	}
 }

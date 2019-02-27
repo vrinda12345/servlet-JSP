@@ -5,9 +5,9 @@ import com.cg.payroll.beans.Associate;
 import com.cg.payroll.exceptions.AssociateDetailsNotFoundException;
 
 public interface PayrollServices {
-int acceptAssociateDetails(Associate associate);
-double calculateNetSalary(int associateId)throws AssociateDetailsNotFoundException;
+Associate calculateNetSalary(int associateId)throws AssociateDetailsNotFoundException;
 Associate getAssociateDetails(int associateId )throws AssociateDetailsNotFoundException;
 double calculateAnnualGrossSalary(int associateId)throws AssociateDetailsNotFoundException;
 List <Associate> getAllAssociateDetails( );
+int acceptAssociateDetails(Associate associate);
 }
